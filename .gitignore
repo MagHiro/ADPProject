@@ -1,0 +1,48 @@
+# Ignore the vendor directory, as it contains all your dependencies
+/vendor
+
+# Ignore the node_modules directory, which stores JavaScript dependencies
+/node_modules
+
+# Ignore environment configuration files
+/.env
+
+# Ignore the storage directory, as it contains cached and temporary files
+/storage
+
+# Ignore the public storage directory, where uploaded files are stored
+/public/storage
+
+# Ignore the Homestead environment file
+Homestead.yaml
+
+# Ignore Homestead log file
+Homestead.json
+
+# Ignore PhpStorm project files
+.idea
+
+# Ignore any local database files
+*.sqlite
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore user-specific files
+*.iml
+*.log
+*.pot
+*.pro.user
+*.swp
+*.swo
+
+# Ignore composer lock file
+composer.lock
+
+# Ignore Laravel Mix environment file
+npm-debug.log
+yarn-error.log
+
+# Ignore PHPStorm files
+.phpstorm.meta.php
+.phpstorm.meta.php.skeleton
