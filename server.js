@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const io = require("socket.io")(http, {
     cors: {
-        origin: process.env.APP_URL,
+        origin: "auction.test",
         credentials: true,
         methods: ["GET"]
     }
