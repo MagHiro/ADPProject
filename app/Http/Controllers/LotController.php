@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Lot;
-use App\Services\Lot\DeleteService;
-use App\Services\Lot\StoreService;
+use App\Services\Lot\LotServiceStrategy;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -43,12 +42,12 @@ class LotController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreService $service
+     * @param LotServiceStrategy $service
      * @return RedirectResponse
      */
-    public function store(StoreService $service)
+    public function store(LotServiceStrategy $service)
     {
-        $service->storeLot();
+        $service->execute();
         return redirect()->route('lots.index')->with('success', 'Lot created successfully.');
     }
 
@@ -80,25 +79,26 @@ class LotController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param StoreService $service
+     * @param LotServiceStrategy $service
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(StoreService $service, int $id)
+    public function update(LotServiceStrategy $service, int $id)
     {
-        $service->updateLot($id);
-        return redirect()->route('lots.show', $id)->with('success', 'Lot update successfully.');
+        $service->execute($id);
+        return redirect()->route('lots.show', $id)->with('success', 'Lot updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param LotServiceStrategy $service
      * @param int $id
      * @return RedirectResponse
      */
-    public function destroy(int $id)
+    public function destroy(LotServiceStrategy $service, int $id)
     {
-        DeleteService::delete($id);
-        return redirect()->route('lots.index')->with('success', 'Lot delete successfully.');
+        $service->execute($id);
+        return redirect()->route('lots.index')->with('success', 'Lot deleted successfully.');
     }
 }
